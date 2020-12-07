@@ -11,7 +11,7 @@ class Ant {
     bool dead_;
     int maxLifespan_;
     int lifespan_ = maxLifespan_;
-    size_t attack_, defense_;
+    int attack_, defense_;
     int posX_, posY_;
     
     // Statuses
@@ -23,7 +23,7 @@ class Ant {
     std::vector<TaskPriority> priority_;
     
 public:
-    Ant(int lifespan, size_t attack, size_t defense):
+    Ant(int lifespan, int attack, int defense):
         dead_(false),
         lifespan_(lifespan),
         attack_(attack), 
@@ -34,7 +34,7 @@ public:
     
 
     // Getters
-    void getHit(size_t dmg) {
+    void getHit(int dmg) {
         if (dmg < defense_) {
             return;
         }

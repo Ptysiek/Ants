@@ -13,7 +13,7 @@
 
 #include "displays/WorldScene_MainFrame.hpp"
 #include "displays/Warning_LittleWindow.hpp"
-
+#include "displays/WorldScene_PauseMenu.hpp"
 
 
 
@@ -22,6 +22,7 @@ class WorldScene : public SceneInterface {
     // MainPage_over46x130 ---------------
     Warning_LittleWindow    warn_LittleWindow_;
     WorldScene_MainFrame    ws_MainFrame_;
+    WorldScene_PauseMenu    ws_PauseMenu_;
     
 public:
 
@@ -31,6 +32,7 @@ public:
         clear();
         warn_LittleWindow_.redraw();
         ws_MainFrame_.redraw();
+        ws_PauseMenu_.redraw();
     }
 
     void drawDisplays() override {
@@ -38,7 +40,6 @@ public:
     }
 
     bool stallInput() override {
-        //int choice = ws_MainFrame_.input();
         int choice = sdInputDisp_.input();
 
 
@@ -46,6 +47,21 @@ public:
         case KEY_RESIZE:
             initDisplays();
             break;
+        
+        case 'K':
+        case 'k':
+        case 'W':
+        case 'w':
+            --ws_PauseMenu_;
+            break;
+        
+        case 'J':
+        case 'j':
+        case 'S':
+        case 's':
+            ++ws_PauseMenu_;
+            break;
+
 
         case 27:
             MenuEnter("Exit");
@@ -63,6 +79,8 @@ public:
         }
         //ws_MainFrame_.redraw();
         //menu1Big_InputBox_.redraw();
+        
+        ws_PauseMenu_.redraw();
         return true;
     }
 
@@ -92,17 +110,21 @@ private:
         point_y = (stdHeight - sceneHeight) / 2;
 
         ws_MainFrame_.mmove(point_x, point_y);
+        ws_PauseMenu_.mmove(point_x, point_y);
       //  menu1Big_InputBox_.rmove(point_x + sceneWidth - menu1Big_InputBox_.get_Width(),
        //                          point_y + sceneHeight - menu1Big_InputBox_.get_Height());
 
         ws_MainFrame_.refresh();
+        ws_PauseMenu_.refresh();
         //menu1Big_InputBox_.refresh();
 
     }
 
     void MainPage_over46x130() {
         ws_MainFrame_.refresh();
-       // menu1Big_InputBox_.refresh();
+        ws_PauseMenu_.refresh();
+        // menu1Big_InputBox_.refresh();
+
     }
 
         
@@ -125,17 +147,9 @@ private:
         //                         point_y + sceneHeight - menu1Big_InputBox_.get_Height());
 
         warn_LittleWindow_.refresh();
-
-        //ws_MainFrame_.refresh();
-
-       // menu1Big_Background_.refresh();
-        //menu1Big_InputBox_.refresh();
-
     }
 
     void MainPage_lessthen46x130() {
-        //ws_MainFrame_.refresh();
-        //menu1Big_InputBox_/menu1Big_InputBox_.refresh();
         warn_LittleWindow_.refresh();
     }
 

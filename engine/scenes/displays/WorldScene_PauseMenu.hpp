@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "../../i_Display.hpp"
+#include "../../DisplayInterface.hpp"
 
 #include <array>
 

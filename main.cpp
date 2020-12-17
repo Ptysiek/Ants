@@ -8,7 +8,7 @@
 #include "WorldEngine.hpp"
 #include "engine/Engine.hpp"
 
-// #include "engine/scenes/WorldScene.hpp"
+#include "engine/scenes/WorldScene.hpp"
 
 int main() {
 
@@ -16,7 +16,7 @@ int main() {
 
     initscr();
     program.initCurses();
-    // program.initStage(std::make_shared<WorldScene>());
+    program.initStage(std::make_shared<WorldScene>());
     endwin();
 
     return 0;

@@ -4,7 +4,7 @@
 #include <memory>
 #include <stack>
 
-#include "i_Scene.hpp"
+#include "SceneInterface.hpp"
 
 
 class Engine {

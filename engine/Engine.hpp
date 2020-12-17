@@ -10,7 +10,7 @@
 class Engine {
 
 protected:
-    std::stack<std::shared_ptr<i_Scene>> scenes_;
+    std::stack<std::shared_ptr<SceneInterface>> scenes_;
 
 
 public:
@@ -34,7 +34,7 @@ public:
 
     }
 
-    virtual void initStage(std::shared_ptr<i_Scene> scene) {
+    virtual void initStage(std::shared_ptr<SceneInterface> scene) {
         scenes_.push(scene);
         gameLoop();
     }

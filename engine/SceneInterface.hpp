@@ -13,7 +13,7 @@ class SceneInterface {
 protected:
     StandardInputDisplay sdInputDisp_;
     
-    i_Scene() {
+    SceneInterface() {
         newcall_ = false;
         call_ = "";
     }

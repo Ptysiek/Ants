@@ -6,8 +6,25 @@
 #include "Info.hpp"
 #include "WorldMatrix.hpp"
 #include "WorldEngine.hpp"
+#include "engine/Engine.hpp"
+
+// #include "engine/scenes/WorldScene.hpp"
 
 int main() {
+
+    Engine program;
+
+    initscr();
+    program.initCurses();
+    // program.initStage(std::make_shared<WorldScene>());
+    endwin();
+
+    return 0;
+
+
+
+
+
     WorldEngine world;
     
     TaskInformations taskInfo;

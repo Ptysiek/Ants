@@ -6,3 +6,6 @@
 /build/CMakeCache.txt
 /build/cmake_install.cmake
 /build/Makefile
+
+# Vim Tools:
+tags

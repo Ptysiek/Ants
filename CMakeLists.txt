@@ -15,7 +15,7 @@ set(THIS_PROJECT_SRC_DIRECTORIES
     
 )
 set(THIS_PROJECT_TESTS_DIRECTORIES
-    tools/Fortuity.ut.cpp
+    #tools/Fortuity.ut.cpp
 )
 
 # set flags

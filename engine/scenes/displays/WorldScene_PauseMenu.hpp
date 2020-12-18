@@ -11,22 +11,27 @@
 class WorldScene_PauseMenu : public DisplayInterface {
 
     size_t highlight_;
-    std::array<std::string, 2> choices_ = {"Return", "Exit"};
+    std::array<std::string, 2> choices_ = {"Resume", "Exit"};
 
-
+    bool visible_ = false;
 
 public: 
     // CONSTRUCTOR:
     WorldScene_PauseMenu(): DisplayInterface(45, 20, 4) {
         window_ = newwin(scrheight_, scrwidth_, margin_/2, margin_);      
-        //keypad(window_, true);  
     }
 
-
+    void toggleVisibility() { visible_ = !visible_; }
+    void toggleVisibility(bool state) { visible_ = state; }
+    
+    bool get_Visibility() const { return visible_; }
 
     // `DisplayInterface` OPERATIONS:
     void redraw() override {
-        // wclear(window_);
+        if (!visible_) {
+            this->clear();
+            return;
+        }
 
         wresize(window_,scrheight_, scrwidth_);
         keypad(window_, true);
@@ -48,9 +53,18 @@ public:
 
     size_t get_Size() const { return choices_.size(); }
     size_t get_Index() const { return highlight_; }
-    std::string get_Value() const { return choices_[highlight_]; }
+    
+    std::string get_Value() const { 
+        if (!visible_) {
+            return "none";
+        }
+        return choices_[highlight_]; 
+    }
 
     size_t operator ++() {
+        if (!visible_) {
+            return highlight_;
+        }
         ++highlight_;
 
         if (highlight_ >= choices_.size()) {
@@ -60,6 +74,9 @@ public:
     }
 
     size_t operator --() {
+        if (!visible_) {
+            return highlight_;
+        }
         --highlight_;
 
         if (highlight_ >= choices_.size()) {
@@ -67,6 +84,9 @@ public:
         }
         return highlight_;
     }
-
-
 };
+
+
+
+
+

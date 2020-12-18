@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-//#include "DisplayMenu.hpp"
+
 #include "../SceneInterface.hpp"
 #include "../../tools/Fortuity.hpp"
 
@@ -17,32 +17,26 @@
 
 
 
-
 class WorldScene : public SceneInterface {
-    // MainPage_over46x130 ---------------
+    // MainPage_lessthen46x130 -----------
     Warning_LittleWindow    warn_LittleWindow_;
+    // MainPage_over46x130 ---------------
     WorldScene_MainFrame    ws_MainFrame_;
+    // FastMenuPage_allsize --------------
     WorldScene_PauseMenu    ws_PauseMenu_;
     
 public:
-
     std::string name() override { return "WorldScene01"; }
-
     void initDisplays() override {
         clear();
         warn_LittleWindow_.redraw();
         ws_MainFrame_.redraw();
         ws_PauseMenu_.redraw();
     }
+    void drawDisplays() override { RenderMainPage(); }
+    bool stallInput() override { return stallInput(sdInputDisp_.input()); }
 
-    void drawDisplays() override {
-        RenderMainPage();
-    }
-
-    bool stallInput() override {
-        int choice = sdInputDisp_.input();
-
-
+    bool stallInput(int choice) {
         switch (choice) {
         case KEY_RESIZE:
             initDisplays();
@@ -62,24 +56,22 @@ public:
             ++ws_PauseMenu_;
             break;
 
-
-        case 27:
-            MenuEnter("Exit");
-        //    ++menu1Big_InputBox_;
+        case 'q':
+        case 'Q':
+        case 27:    // ESCAPE
+            ws_PauseMenu_.toggleVisibility();   
+            ws_MainFrame_.refresh();
             break;
 
         case KEY_ENTER:
         case 10:    // ENTER
         case 32:    // SPACE
-          //  MenuEnter(menu1Big_InputBox_.get_Value());
+            MenuEnter(ws_PauseMenu_.get_Value());
             break;
 
         default: 
             return false;
         }
-        //ws_MainFrame_.redraw();
-        //menu1Big_InputBox_.redraw();
-        
         ws_PauseMenu_.redraw();
         return true;
     }
@@ -87,7 +79,8 @@ public:
 private:
     void MenuEnter(std::string input) {
 
-        if (input == "New Game") {
+        if (input == "Resume") {
+            ws_PauseMenu_.toggleVisibility(false);
             // stack new scene
             // scenes.push(scene);
             // call()
@@ -111,25 +104,15 @@ private:
 
         ws_MainFrame_.mmove(point_x, point_y);
         ws_PauseMenu_.mmove(point_x, point_y);
-      //  menu1Big_InputBox_.rmove(point_x + sceneWidth - menu1Big_InputBox_.get_Width(),
-       //                          point_y + sceneHeight - menu1Big_InputBox_.get_Height());
 
         ws_MainFrame_.refresh();
         ws_PauseMenu_.refresh();
-        //menu1Big_InputBox_.refresh();
-
     }
 
     void MainPage_over46x130() {
         ws_MainFrame_.refresh();
         ws_PauseMenu_.refresh();
-        // menu1Big_InputBox_.refresh();
-
     }
-
-        
-    
-
 
     void MainPage_lessthen46x130_ArangeItems(int stdHeight, int stdWidth) {
         int point_x, point_y;
@@ -141,11 +124,7 @@ private:
         point_y = (stdHeight - sceneHeight) / 2;
 
         warn_LittleWindow_.mmove(point_x - 2, point_y - 1);
-
-        //ws_MainFrame_.move(point_x, point_y);
-        //menu1Big_InputBox_.rmove(point_x + sceneWidth - menu1Big_InputBox_.get_Width(),
-        //                         point_y + sceneHeight - menu1Big_InputBox_.get_Height());
-
+        
         warn_LittleWindow_.refresh();
     }
 
@@ -153,16 +132,10 @@ private:
         warn_LittleWindow_.refresh();
     }
 
-    
-    
     void RenderMainPage() {       
-
-
         int stdHeight, stdWidth;
         getmaxyx(stdscr, stdHeight, stdWidth);
         // clear();
-
-
         refresh();
 
         if (stdHeight >= 46 && stdWidth >= 130) {
@@ -175,8 +148,12 @@ private:
             MainPage_lessthen46x130_ArangeItems(stdHeight, stdWidth);
             MainPage_lessthen46x130();
         }
-
-
     }
 };
+
+
+
+
+
+
 

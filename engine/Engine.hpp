@@ -29,7 +29,9 @@ public:
         // [echo() / noecho()]
         noecho();       
         curs_set(0);
-
+        
+        ESCDELAY=25;
+        
         start_color();  
 
     }

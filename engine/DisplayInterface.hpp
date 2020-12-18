@@ -27,7 +27,8 @@ public:
     virtual int get_IntendedMargin() const { return margin_; }
 
     virtual void redraw() = 0;
-
+    
+    virtual void clear() { wclear(window_); }
     virtual void refresh() { wrefresh(window_); }
     virtual int input() { return wgetch(window_); }
 

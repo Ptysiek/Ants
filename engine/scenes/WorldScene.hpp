@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <array>
 #include <curses.h>
 #include <iostream>
@@ -18,7 +17,8 @@
 
 
 class WorldScene : public SceneInterface {
-    // MainPage_lessthen46x130 -----------
+
+    // MainPage_lessthan46x130 -----------
     Warning_LittleWindow    warn_LittleWindow_;
     // MainPage_over46x130 ---------------
     WorldScene_MainFrame    ws_MainFrame_;
@@ -26,6 +26,7 @@ class WorldScene : public SceneInterface {
     WorldScene_PauseMenu    ws_PauseMenu_;
     
 public:
+
     std::string name() override { return "WorldScene01"; }
     void initDisplays() override {
         clear();
@@ -114,7 +115,7 @@ private:
         ws_PauseMenu_.refresh();
     }
 
-    void MainPage_lessthen46x130_ArangeItems(int stdHeight, int stdWidth) {
+    void MainPage_lessthan46x130_ArangeItems(int stdHeight, int stdWidth) {
         int point_x, point_y;
 
         const int sceneWidth = warn_LittleWindow_.get_Width();
@@ -128,7 +129,7 @@ private:
         warn_LittleWindow_.refresh();
     }
 
-    void MainPage_lessthen46x130() {
+    void MainPage_lessthan46x130() {
         warn_LittleWindow_.refresh();
     }
 
@@ -145,10 +146,11 @@ private:
         }
         else {
            // clear();
-            MainPage_lessthen46x130_ArangeItems(stdHeight, stdWidth);
-            MainPage_lessthen46x130();
+            MainPage_lessthan46x130_ArangeItems(stdHeight, stdWidth);
+            MainPage_lessthan46x130();
         }
     }
+
 };
 
 

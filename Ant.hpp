@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Info.hpp"
+#include "tools/Fortuity.hpp"
 
+#include "Info.hpp"
 
 // -----------------------------------------------------------------------------
 class Ant {
@@ -27,9 +28,11 @@ public:
         dead_(false),
         lifespan_(lifespan),
         attack_(attack), 
-        defense_(defense) 
+        defense_(defense),
+        posX_(Fortuity::getRandom(1, 125)),
+        posY_(Fortuity::getRandom(1, 50))
     {
-        id_ = ++s_idCounter; 
+        id_ = ++s_idCounter;
     }
     
 
@@ -45,6 +48,9 @@ public:
             dead_ = true;
         }
     }
+
+    int getPosX() const { return posX_;}
+    int getPosY() const { return posY_;}
     
     void currentDoin() {
         // for(auto& task : priority_) {

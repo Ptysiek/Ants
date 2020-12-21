@@ -12,8 +12,8 @@
 #include "engine/scenes/WorldScene.hpp"
 
 int main() {
-    WorldEngine world;
-    AntBuilder antBuild(world);
+/*     WorldEngine world;
+    AntBuilder antBuild(world); */
 
     Engine program;
 

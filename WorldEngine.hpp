@@ -6,13 +6,12 @@
 #include "WorldMatrix.hpp"
 #include "Ant.hpp"
 
-
 class WorldEngine {
 // private:
     WorldMatrix matrix_;
     
+public:
     std::vector<Ant> allAntsInThisWorld_;
-
 
     // 0 - dirt
     // 1 - grass
@@ -21,4 +20,6 @@ class WorldEngine {
     // * - food
     // @ - base
     // + - path
+
+
 };

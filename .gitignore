@@ -1,5 +1,6 @@
 # Private Notes:
 /.notes/*
+/.vscode/*
 
 # Cmake Stuff:
 /build/CMakeFiles/*

@@ -6,11 +6,14 @@
 #include "Info.hpp"
 #include "WorldMatrix.hpp"
 #include "WorldEngine.hpp"
+#include "AntBuilder.hpp"
 #include "engine/Engine.hpp"
 
 #include "engine/scenes/WorldScene.hpp"
 
 int main() {
+    WorldEngine world;
+    AntBuilder antBuild(world);
 
     Engine program;
 
@@ -25,7 +28,7 @@ int main() {
 
 
 
-    WorldEngine world;
+    /* WorldEngine world;
     
     TaskInformations taskInfo;
     taskInfo.taskGrade.push_back(TaskPriority::thirst);
@@ -46,6 +49,6 @@ int main() {
         std::cout << record << "\n";
     }    
     
-    return 0;
+    return 0; */
 }
 

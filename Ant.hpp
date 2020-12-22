@@ -33,7 +33,7 @@ public:
         defense_(defense),
         posX_(Fortuity::getRandom(1, 128)),
         posY_(Fortuity::getRandom(1, 44)),
-        targetPos_(std::pair<int,int>(Fortuity::getRandom(1,125), Fortuity::getRandom(1,50)))
+        targetPos_(std::pair<int,int>(Fortuity::getRandom(1,128), Fortuity::getRandom(1,44)))
     {
         id_ = ++s_idCounter;
     }
@@ -64,7 +64,7 @@ public:
         const auto& [posx, posy] = targetPos_;
 
         if (posx == posX_ && posy == posY_) {
-            std::pair<int,int> newTarget(Fortuity::getRandom(10, 100), Fortuity::getRandom(5, 35));
+            std::pair<int,int> newTarget(Fortuity::getRandom(1, 128), Fortuity::getRandom(1, 44));
             setTargetPos(newTarget);
         }
         else {

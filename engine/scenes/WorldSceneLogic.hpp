@@ -12,7 +12,7 @@ struct WorldSceneLogic {
     AntBuilder antBuild_;
 
     WorldSceneLogic() : antBuild_(world_) {
-        for (size_t i = 0; i < 10; i++)
+        for (size_t i = 0; i < 20; i++)
         {
             antBuild_.summon();
         } 

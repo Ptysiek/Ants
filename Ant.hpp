@@ -29,8 +29,8 @@ public:
         lifespan_(lifespan),
         attack_(attack), 
         defense_(defense),
-        posX_(Fortuity::getRandom(1, 125)),
-        posY_(Fortuity::getRandom(1, 50))
+        posX_(Fortuity::getRandom(1, 128)),
+        posY_(Fortuity::getRandom(1, 44))
     {
         id_ = ++s_idCounter;
     }

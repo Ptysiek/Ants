@@ -20,10 +20,10 @@ public:
         //wresize(stdscr, 50, 300);
 
         // [cbreak() / raw()] / [halfdelay(int) / nodelay(win, bool) / timeout(int)]
-        cbreak();
-        // raw();   
-        // halfdelay(1);
-        
+        //cbreak();
+        //raw();   
+        halfdelay(1);
+        nodelay(stdscr, true);
         // keypad(stdscr, TRUE);
 
         // [echo() / noecho()]

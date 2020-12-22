@@ -88,6 +88,8 @@ public:
 private:
     void Update() {
         worldEngineLogic_.Update();
+        initDisplays();
+        RenderMainPage();
     }
 
     void MenuEnter(std::string input) {

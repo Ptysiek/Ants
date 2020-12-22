@@ -14,10 +14,15 @@
 #include "displays/Warning_LittleWindow.hpp"
 #include "displays/WorldScene_PauseMenu.hpp"
 
+#include "WorldSceneLogic.hpp"
+
 
 
 class WorldScene : public SceneInterface {
-
+    // EXTRA INSIDE SCENE LOGIC --------------------------------------
+    WorldSceneLogic worldEngineLogic_;
+    
+    // DISPLAYS: -----------------------------------------------------
     // MainPage_lessthan46x130 -----------
     Warning_LittleWindow    warn_LittleWindow_;
     // MainPage_over46x130 ---------------
@@ -25,7 +30,9 @@ class WorldScene : public SceneInterface {
     // FastMenuPage_allsize --------------
     WorldScene_PauseMenu    ws_PauseMenu_;
     
+
 public:
+    WorldScene() : ws_MainFrame_(worldEngineLogic_) {}
 
     std::string name() override { return "WorldScene01"; }
     void initDisplays() override {

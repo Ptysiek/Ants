@@ -14,6 +14,8 @@ class Ant {
     int lifespan_ = maxLifespan_;
     int attack_, defense_;
     int posX_, posY_;
+
+    std::pair<int,int> targetPos_;
     
     // Statuses
     int maxHunger_, maxThirst_, maxStrength_;
@@ -30,7 +32,8 @@ public:
         attack_(attack), 
         defense_(defense),
         posX_(Fortuity::getRandom(1, 125)),
-        posY_(Fortuity::getRandom(1, 50))
+        posY_(Fortuity::getRandom(1, 50)),
+        targetPos_(std::pair<int,int>(Fortuity::getRandom(1,125), Fortuity::getRandom(1,50)))
     {
         id_ = ++s_idCounter;
     }
@@ -52,18 +55,45 @@ public:
     int getPosX() const { return posX_;}
     int getPosY() const { return posY_;}
     
-    void currentDoin() {
+    void behave() {
         // for(auto& task : priority_) {
-            
+        goTo();    
         // }
     }
-    
+    void goTo() {
+        const auto& [posx, posy] = targetPos_;
+
+        if (posx == posX_ && posy == posY_) {
+            std::pair<int,int> newTarget(Fortuity::getRandom(10, 100), Fortuity::getRandom(5, 35));
+            setTargetPos(newTarget);
+        }
+        else {
+            moveCoordinate(posx, posX_);
+            moveCoordinate(posy, posY_);
+        }
+    }
+
+    void moveCoordinate(const int& pos, int& pos_) {
+        int dir = 0;
+        
+        if (pos > pos_) {
+            dir = 1; 
+        } 
+        else if (pos < pos_) {
+            dir = -1;
+        }
+        pos_ += dir;
+    }
+
+
     // Setters
     void setHunger(int hunger) { hunger_ = hunger; }
     void setThirst(int thirst) { thirst_ = thirst; }
     void setStrength(int strength) { strength_ = strength; }
 
 private:
+    void setTargetPos(std::pair<int,int> targetPos) { targetPos_ = targetPos; } 
+    
     // Operations
     void attack(Ant& ant){
         ant.getHit(attack_);

@@ -21,6 +21,7 @@ protected:
     virtual void initDisplays()=0;
     virtual void drawDisplays()=0;
     virtual bool stallInput()=0;
+    virtual void updateLogic()=0;
 
     void call(std::string call) {
         if (call.empty()) {
@@ -45,5 +46,5 @@ public:
     void init() { initDisplays(); }
     void render() { drawDisplays(); }
     bool input() { return stallInput(); }
-
+    void update() { updateLogic(); }
 };

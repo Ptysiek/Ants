@@ -43,6 +43,7 @@ public:
     }
     void drawDisplays() override { RenderMainPage(); }
     bool stallInput() override { return stallInput(sdInputDisp_.input()); }
+    void updateLogic() override { Update(); }
 
     bool stallInput(int choice) {
         switch (choice) {
@@ -85,6 +86,10 @@ public:
     }
 
 private:
+    void Update() {
+        worldEngineLogic_.Update();
+    }
+
     void MenuEnter(std::string input) {
 
         if (input == "Resume") {

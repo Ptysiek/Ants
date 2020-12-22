@@ -18,5 +18,12 @@ struct WorldSceneLogic {
         } 
     }
 
+    void Update() {
+        for (auto& ant : world_.allAntsInThisWorld_) {
+            ant.behave();
+        }
+    }
+
+
 };
 

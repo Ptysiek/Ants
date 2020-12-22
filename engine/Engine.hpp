@@ -55,6 +55,7 @@ protected:
         scene->render();
 
         while(!scene->newcall()) {
+            scene->update();
             if (scene->input()) {
                 scene->render();
             }

@@ -113,8 +113,15 @@ private:
         ws_MainFrame_.mmove(point_x, point_y);
         ws_PauseMenu_.mmove(point_x, point_y);
 
-        ws_MainFrame_.refresh();
-        ws_PauseMenu_.refresh();
+        //ws_MainFrame_.refresh();
+        if(ws_PauseMenu_.get_Visibility()){ 
+            ws_MainFrame_.refresh(); 
+            ws_PauseMenu_.refresh(); 
+        } 
+        else {
+            ws_PauseMenu_.refresh(); 
+            ws_MainFrame_.refresh();
+        }
     }
 
     void MainPage_over46x130() {

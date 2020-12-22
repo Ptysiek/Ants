@@ -1,8 +1,7 @@
 #pragma once
 
 #include <tuple>
-
-
+#include <vector>
 
 // -----------------------------------------------------------------------------
 enum Infotype {
@@ -10,6 +9,12 @@ enum Infotype {
     enemy,
     colony,
     task
+};
+
+enum ObstacleType{
+    TREE,
+    ROCK,
+    HOLE
 };
 
 class Info {

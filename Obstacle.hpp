@@ -3,11 +3,12 @@
 #include "Info.hpp"
 
 class Obstacle{
+protected:
+    char sign_ = '?';
 private:
     size_t id_;
     static size_t s_idCounter;
     const int type_;
-
 public:
     Obstacle(int type) : type_(type){} 
     virtual int get_id() const {return id_;}

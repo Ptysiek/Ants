@@ -6,5 +6,7 @@
 class Tree : public Obstacle {
 
 public:
-    Tree() : Obstacle(ObstacleType::TREE) {}
+    Tree() : Obstacle(ObstacleType::TREE)  {
+        sign_ = 'T';
+    }
 };

@@ -14,7 +14,9 @@ enum Infotype {
 enum ObstacleType{
     TREE,
     ROCK,
-    HOLE
+    HOLE,
+    WATER,
+    FOOD
 };
 
 class Info {

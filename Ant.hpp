@@ -65,8 +65,20 @@ public:
         
         whereIwas_.push_back(std::pair<size_t,size_t>(worldScope.x, worldScope.y));
         
-        decision = "goUP";
-
+        int rand = Fortuity::getRandom(0,3);
+        switch (rand) {
+        case 0:
+            decision = "goDOWN";    
+            break;
+        case 1:
+            decision = "goLEFT";    
+            break;
+        case 2:
+            decision = "goRIGHT";    
+            break;
+        default:
+            decision = "goUP";    
+        }
 
         return decision;
     }

@@ -5,7 +5,6 @@
 #include "../../AntBuilder.hpp"
 
 
-
 struct WorldSceneLogic {
 
     WorldEngine world_;
@@ -21,7 +20,26 @@ struct WorldSceneLogic {
 
     void Update() {
         for (auto& ant : world_.allAntsInThisWorld_) {
-            ant.behave(world_.matrix_.getScope(ant.x_pos, ant.y_pos));
+            std::string antDecision;
+            antDecision = ant.behave(world_.matrix_.getScope(ant.x_pos, ant.y_pos));
+            AntTranslator(ant, antDecision);
+        }
+    }
+
+private:
+    void AntTranslator(WorldAnt& ant, const std::string& antDecision) {
+
+        if (antDecision == "goUP") {
+            --ant.y_pos;
+        }
+        if (antDecision == "goDOWN") {
+            ++ant.y_pos;
+        }
+        if (antDecision == "goLEFT") {
+            --ant.x_pos;
+        }
+        if (antDecision == "goRIGHT") {
+            ++ant.x_pos;
         }
     }
 

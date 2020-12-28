@@ -7,10 +7,14 @@ class AntBuilder{
     WorldEngine& world_;
 
 public:
-    Ant summon(){
-        Ant ant(10, 2, 1);
-        world_.allAntsInThisWorld_.push_back(ant);
-        return ant;
+    WorldAnt summon(){
+        WorldAnt newAnt {
+            Ant(10,2,1),
+            Fortuity::getRandom(1, 128),
+            Fortuity::getRandom(1, 44)
+        };
+        world_.allAntsInThisWorld_.push_back(newAnt);
+        return newAnt;
     }
 
     

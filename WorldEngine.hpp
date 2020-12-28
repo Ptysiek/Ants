@@ -6,12 +6,22 @@
 #include "WorldMatrix.hpp"
 #include "Ant.hpp"
 
+
+
+
+struct WorldAnt : public Ant {
+    int x_pos;
+    int y_pos;
+};
+
+
+
 class WorldEngine {
 // private:
-    WorldMatrix matrix_;
-    
+ 
 public:
-    std::vector<Ant> allAntsInThisWorld_;
+    WorldMatrix matrix_;
+    std::vector<WorldAnt> allAntsInThisWorld_;
 
     // 0 - dirt
     // 1 - grass

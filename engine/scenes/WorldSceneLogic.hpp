@@ -11,6 +11,7 @@ struct WorldSceneLogic {
     WorldEngine world_;
     AntBuilder antBuild_;
 
+
     WorldSceneLogic() : antBuild_(world_) {
         for (size_t i = 0; i < 20; i++)
         {
@@ -20,7 +21,7 @@ struct WorldSceneLogic {
 
     void Update() {
         for (auto& ant : world_.allAntsInThisWorld_) {
-            ant.behave();
+            ant.behave(world_.matrix_.getScope(ant.x_pos, ant.y_pos));
         }
     }
 

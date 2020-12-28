@@ -32,7 +32,7 @@ public:
         // mvwprintw(window_, world_.allAntsInThisWorld_[0].getPosY(), world_.allAntsInThisWorld_[0].getPosX(), "X");
         for (const auto& ant : worldEngineLogic_.world_.allAntsInThisWorld_)
         {
-            mvwprintw(window_, ant.getPosY(), ant.getPosX(), "X");
+            mvwprintw(window_, ant.y_pos, ant.x_pos, "X");
         }
         
     }

@@ -1,8 +1,11 @@
 #pragma once
 
+#include <vector>
+
 #include "tools/Fortuity.hpp"
 
 #include "Info.hpp"
+#include "WorldMatrix.hpp"
 
 // -----------------------------------------------------------------------------
 class Ant {
@@ -13,7 +16,6 @@ class Ant {
     int maxLifespan_;
     int lifespan_ = maxLifespan_;
     int attack_, defense_;
-    int posX_, posY_;
 
     std::pair<int,int> targetPos_;
     
@@ -25,14 +27,15 @@ class Ant {
     
     std::vector<TaskPriority> priority_;
     
+    std::vector<std::pair<size_t,size_t>> whereIwas_;
+    
+
 public:
     Ant(int lifespan, int attack, int defense):
         dead_(false),
         lifespan_(lifespan),
         attack_(attack), 
         defense_(defense),
-        posX_(Fortuity::getRandom(1, 128)),
-        posY_(Fortuity::getRandom(1, 44)),
         targetPos_(std::pair<int,int>(Fortuity::getRandom(1,128), Fortuity::getRandom(1,44)))
     {
         id_ = ++s_idCounter;
@@ -52,15 +55,23 @@ public:
         }
     }
 
-    int getPosX() const { return posX_;}
-    int getPosY() const { return posY_;}
+   // int getPosX() const { return posX_;}
+   // int getPosY() const { return posY_;}
     
-    void behave() {
+    std::string behave(WorldScope worldScope) {
+        std::string decision;
         // for(auto& task : priority_) {
         goTo();    
-        // }
+        
+        whereIwas_.push_back(std::pair<size_t,size_t>(worldScope.x, worldScope.y));
+        
+        decision = "goUP";
+
+
+        return decision;
     }
     void goTo() {
+    /*
         const auto& [posx, posy] = targetPos_;
 
         if (posx == posX_ && posy == posY_) {
@@ -70,19 +81,20 @@ public:
         else {
             moveCoordinate(posx, posX_);
             moveCoordinate(posy, posY_);
-        }
+        }*/
     }
 
     void moveCoordinate(const int& pos, int& pos_) {
         int dir = 0;
-        
+        //*
         if (pos > pos_) {
             dir = 1; 
         } 
         else if (pos < pos_) {
             dir = -1;
         }
-        pos_ += dir;
+        pos_ += dir; 
+        //*/
     }
 
 
